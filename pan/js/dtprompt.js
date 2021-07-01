@@ -1,3 +1,4 @@
+function prompt() {
 $.ajax({
     url: 'https://dt.pan.bufeifan.top',
     dataType: "jsonp",
@@ -9,4 +10,4 @@ $.ajax({
 			document.getElementById("prompt").innerHTML = "当前网络为内网,即服务器所在局域网";
         }
     }
-});
+})}
