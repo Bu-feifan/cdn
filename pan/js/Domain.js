@@ -6,7 +6,7 @@ $.ajax({
         if (response.status == 200) {
             window.location.href = "https://local.pan.bufeifan.top/n.html";
         } else {
-			window.location.href = "https://local.pan.bufeifan.top/n.html";
+			window.location.href = "/index.html"
         }
     }
 });
