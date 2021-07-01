@@ -1,13 +1,12 @@
 $.ajax({
-    url: 'https://192.168.0.104:1912',
+    url: 'https://dt.pan.bufeifan.top',
     dataType: "jsonp",
     type: 'GET',
     complete: function (response) {
         if (response.status == 200) {
-            window.location.href = "https://192.168.0.104:1912/home-u.html";
+            window.location.href = "https://local.pan.bufeifan.top/home-u.html";
         } else {
-            alert('你成功激活了Bug，告诉我你是怎么做到的：admin@bufeifan.top');
-			window.location.href = "https://192.168.0.104:1912/home-u.html";
+			window.location.href = "https://local.pan.bufeifan.top/home-u.html";
         }
     }
 });
