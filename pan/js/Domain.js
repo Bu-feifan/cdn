@@ -4,12 +4,12 @@ $.ajax({
     type: 'GET',
     complete: function (response) {
         if (response.status == 200) {
-            window.location.href = "https://local.pan.bufeifan.top/home-u.html";
+            window.location.href = "https://local.pan.bufeifan.top/n.html";
         } else {
-			window.location.href = "https://local.pan.bufeifan.top/home-u.html";
+			window.location.href = "https://local.pan.bufeifan.top/n.html";
         }
     }
 });
 setTimeout(function () {
-    window.location.href = "/home-n.html"
+    window.location.href = "/index.html"
 }, 1000)
