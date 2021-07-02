@@ -1,6 +1,6 @@
 function getReferer(){return!!document.referrer&&document.referrer}
 function prompt(n){var t=n;return 1==new RegExp(/local.pan.bufeifan.top|192.168.0.104|dt.pan.bufeifan.top/).test(t)}
-true==prompt(getReferer())&&(window.location.href="https://local.pan.bufeifan.top/n.html"),0==getReferer()&&$.getScript("https://cdn.bufeifan.top/pan/js/dtprompt.js",function(){})
+true==prompt(getReferer())&&(window.location.href="https://local.pan.bufeifan.top/n.html")
 $.ajax({
     url: 'https://dt.pan.bufeifan.top',
     dataType: "jsonp",
