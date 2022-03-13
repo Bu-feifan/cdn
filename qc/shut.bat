@@ -1,70 +1,81 @@
 @echo off 
 :start 
-shutdown -a  >nul 2>nul
-set a-err=%ERRORLEVEL%
-echo 调整控制台样式……
-title=关机选项
+shutdown -a
+set a_EL=%ERRORLEVEL%
+if "%1"=="N" goto sd_N
+if "%1"=="F" goto sd_F
+if "%1"=="R" goto s_R
+if "%1"=="RF" goto sd_RF
+if "%1"=="RN" goto sd_RN
+if "%1"=="n" goto sd_N
+if "%1"=="f" goto sd_F
+if "%1"=="r" goto s_R
+if "%1"=="rf" goto sd_RF
+if "%1"=="rn" goto sd_RN
+if "%1"=="rF" goto sd_RF
+if "%1"=="rN" goto sd_RN
+if "%1"=="Rf" goto sd_RF
+if "%1"=="Rn" goto sd_RN
+title=电源选项
+
+:which
 cls
-set r-if=0
-if "%1"=="n" goto shutdown
-if "%1"=="N" goto shutdown
-if "%1"=="f" goto fast
-if "%1"=="F" goto fast
-if "%1"=="r" goto restart
-if "%1"=="R" goto restart
-if "%1"=="rr" goto re
-if "%1"=="RR" goto re
-if "%1"=="rf" goto restart-fast
-if "%1"=="RF" goto restart-fast
-:if
-cls 
-if %a-err% equ 0 (mode con cols=29 lines=6&color f0) else (mode con cols=37 lines=5&color f0)
+if %a_EL% equ 0 (mode con cols=29 lines=6&color f0
+echo 已取消命令
 echo.
-if %a-err% equ 0 (echo 已取消关机命令
-echo.
-) 
-if %a-err% equ 0 (echo 是否继续关机？[其他字符=退出]) else (echo 是否关机？[q=退出][其他字符=普通模式])
-echo.
-set /p shutdown-if=请输入[r=重启][f=快速模式]:
-if "%shutdown-if%"=="q" goto quit
-if "%shutdown-if%"=="f" goto fast
-if "%shutdown-if%"=="r" goto restart
-if %a-err% equ 0 (goto quit)
-goto shutdown
-:fast
-if %r-if% equ 1 (shutdown -r -t 0) else (shutdown -s -t 0)
-goto quit
-:shutdown
+echo 是否继续？[其他字符=退出]
+echo.) else (mode con cols=37 lines=4&color f0
+echo 是否关机？[Q=退出][其他字符=普通模式])
+set /p s_If=请输入[R=重启][F=快速模式]:
+if "%s_If%"=="Q" goto quit
+if "%s_If%"=="F" goto sd_F
+if "%s_If%"=="R" goto s_R
+if "%s_If%"=="q" goto quit
+if "%s_If%"=="f" goto sd_F
+if "%s_If%"=="r" goto s_R
+if %a_EL% equ 0 goto quit
+goto sd_N
+
+:sd_N
 shutdown -s -t 5
 goto quit
-:restart
-cls 
-mode con cols=30 lines=5&color f0
-echo. 
-echo 是否启用快速重启？[f=快速模式]
-echo. 
-set /p re-if=请输入[q=退出][b=返回]: 
-set r-if=1
-if "%re-if%"=="q" goto quit
-if "%re-if%"=="Q" goto quit
-if "%re-if%"=="f" goto fast
-if "%re-if%"=="F" goto fast
-if "%re-if%"=="b" goto oddback
-if "%re-if%"=="B" goto oddback
-goto re
+
+:sd_F
+shutdown -s -t 0
 goto quit
-:re
+
+:s_R
+if "%2"=="F" goto sd_RF
+if "%2"=="N" goto sd_RN
+if "%2"=="f" goto sd_RF
+if "%2"=="n" goto sd_RN
+cls 
+mode con cols=39 lines=4
+echo 重启选项[F=快速模式][其他字符=普通模式]
+echo. 
+set /p r_F=请输入[Q=退出][B=返回]: 
+if "%r_F%"=="Q" goto quit
+if "%r_F%"=="F" goto sd_RF
+if "%r_F%"=="B" goto s_B
+if "%r_F%"=="q" goto quit
+if "%r_F%"=="f" goto sd_RF
+if "%r_F%"=="b" goto s_B
+goto sd_RN
+goto quit
+
+:sd_RN
 shutdown -r -t 5
 goto quit
-:restart-fast
-set r-if=1
-goto fast
+
+:sd_RF
+shutdown -r -t 0
 goto quit
-:oddback
-set r-if=0
-set shutdown-if=0
-set re-if=0
-set a-err=null
-goto if
+
+:s_B
+set s_If=u
+set r_F=u
+set a_EL=u
+goto which
+
 :quit
 exit
