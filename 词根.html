@@ -1,0 +1,617 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>词根</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><ol start='' ><li><p><span>ag = do, act 做，动 agent agile agitate</span></p></li><li><p><span>agr[io] = field 田地 agriculture agrochemicals</span></p></li><li><p><span>ann enn = year 年 anniversary annual annuity perennial</span></p></li><li><p><span>audi[t] = hear 听 audience auditorium audible audit audiphone audio</span></p></li><li><p><span>be[ll] = war 战争 rebel bellicose belligerent</span></p></li><li><p><span>brev = short 短 abbreviation brief</span></p></li><li><p><span>ced ceed → cess = go 行走 precedent exceed proceed recede antecedent successor intercede</span></p></li><li><p><span>cept = take 拿，取 except accept intercept incept</span></p></li><li><p><span>cid cis = cut kill 切，杀 decide concise precise incise incisor excide suicide homicide insecticide</span></p></li><li><p><span>circ = ring 环，圈 circus encircle circulative circlet circuit</span></p></li><li><p><span>cla[i]m = cry shout 喊叫 exclaim proclaim acclaim clamour declaim</span></p></li><li><p><span>clar = clear 清楚，明白 declare clarify clarity</span></p></li><li><p><span>clud  → clus = close shut 关闭 exclude include conclude seclude recluse occlude preclude</span></p></li><li><p><span>cogn = know 知道 incognition recognize precognition</span></p></li><li><p><span>cord = heart 心 cordial record concord discord accord core</span></p></li><li><p><span>corp[or] = body 体 corporation incorporate corporal  corps corpse corpulent</span></p></li><li><p><span>cred = believe 相信 incredible incredulous discredit accredit credential creed</span></p></li><li><p><span>cruc cruis = cross 十字 crucial cruise crucify cruciate</span></p></li><li><p><span>cur = care 关心，注意 insecurity incurious curio cure incurable</span></p></li><li><p><span>c[o]ur[s]  = run 跑 occur occurent current excurese excursive course  intercourse concourse incursion cursory precursor concur recurrence transcurrent corrridor curriculum</span></p></li><li><p><span>dent = tooth 牙齿 dentist denture bident</span></p></li><li><p><span>di = day 日 diary dial  antemeridian postmeridian</span></p></li><li><p><span>dict = say 言，说 contradict dictate dictatorship predict malediction benediction indicate dictionary dictum edict indict interdict verdict</span></p></li><li><p><span>dit = give 给 tradition edit extradite</span></p></li><li><p><span>do[n] = give 给 pardon donor condone donate dose dotal anecdote</span></p></li><li><p><span>du = two 二 dual duplicate duplicity duplex duel duet</span></p></li><li><p><span>duc[t] = lead 引导 educate introduce  conduct produce abduct seduce aqueduct viaduct ventiduct reduce induce educe</span></p></li><li><p><span>ed = eat 吃 inedible edacious</span></p></li><li><p><span>equ = equal 等，均，平 equal inadequate equable equivalent equate equator equivocal equiangular equilateral equidistance equity equanimity</span></p></li><li><p><span>ev = age 年龄，寿命，时代，时期 longevity medieval primeval coeval</span></p></li><li><p><span>fac[t] = do make 做，作 factory manufacture benefavtor malefactor factitious facile factual</span></p></li><li><p><span>fer = bring carry 带，拿 confer differ offer prefer transfer auiferous cruciferous floriferous</span></p></li><li><p><span>flo[u]r = flower 花 florist floridity uniflorous floret effloresce flourish noctiflorous</span></p></li><li><p><span>flu = flow 流 fluid fluent influential influenza  refluent defluent effluent superfluous flux afflux</span></p></li><li><p><span>fus = pour 灌，流，倾泻 refuse confuse transfuse infuse diffusion interfuse affusion perfuse profuse</span></p></li><li><p><span>grad = step go grade 步，走，级 gradual retrograde undergraduate postgraduate degrade downgrade upgrade</span></p></li><li><p><span>gram = write draw 写，画，文字，图形 grammar diagram telegram program cryptogram parallelogram kilogram gramophone hologram electrocardiogram seismogram</span></p></li><li><p><span>graph = write draw 写，画，文字，图形，记录器 photograph autograph autobiography ideograph orthography monograph pseudograph macrograph micrograph seismograph chronograph telegraph cyclograph holograph barograph</span></p></li><li><p><span>gress = go walk 行走 progress retrogress congress aggress egress ingress transgress digress regress</span></p></li><li><p><span>habit = dwell 居住 inhabitable inhabitancy cohabitant</span></p></li><li><p><span>hibit = hold 拿，持 exhibit inhibit prohibit</span></p></li><li><p><span>hospit = guest 客人 hospital inhospitable</span></p></li><li><p><span>idio = peculiar own private proper 特殊的，个人的，专有的 idiomatic idiotic idiocy idiograph idiochromatic idiopathy</span></p></li><li><p><span>insul = island 岛 peninsular insular insulate insulator insulin</span></p></li><li><p><span>it = go 行走 exit initial transit transitory transition itinerary circuit sedition</span></p></li><li><p><span>ject = throw 投掷 project inject reject interject subject object adjective eject abject deject</span></p></li><li><p><span>juven = young 年轻，年少 juvenile juvenescence rejuvenate rejuvenesce</span></p></li><li><p><span>lect leg lig = choose gather 选，集 elect select intellectual intelligentsia collect inelegant ineligible neglect negligence</span></p></li><li><p><span>lev = raise 举，升 elevate leverage relieve levitate levity alleviate</span></p></li><li><p><span>liber = free 自由 liberate preliberation postliberation liberal</span></p></li><li><p><span>lingu = language 语言 linguist bilingual collingual</span></p></li><li><p><span>liter = letter 文字，字母 illiterate literature literary uniliteral biliteral transliterate obliterate literal</span></p></li><li><p><span>loc = place 地方 local locomotive locate collocate dislocate translocate relocate</span></p></li><li><p><span>log = speak 言，说 monologue dialogue dialogist eulogy apology  prologue epilogue pseudology neologism  antilogy dyslogy illogic philologist</span></p></li><li><p><span>loqu = speak 言，说 eloquent  coloquial multiloquent grandiloquent magniloquent soliloquy somniloquy obloquy loquacious</span></p></li><li><p><span>lun = moon 月亮 lunar semilunar demilune plenilune luniform lunet superlunar interlunar</span></p></li><li><p><span>man = dwell stay 居住，停留 mansion manor permanent remain remainder remanent immanent</span></p></li><li><p><span>man[u] = hand 手 manuscript manufacture manual manumit manumission manage manner manacle maintain maintenance</span></p></li><li><p><span>mar = sea 海 marine submarine aeromarine  reansmarine ultramarine maritime mariculture marigraph</span></p></li><li><p><span>medi = middle 中间 immediate medium mediate medieval mediterranean median</span></p></li><li><p><span>memor = memory 记忆 memorial memorandum commemorate remember</span></p></li><li><p><span>mer[gs] = dip sink 沉，没 emerge emergency emersion immerge immerse submerge submersed</span></p></li><li><p><span>migr = remove move 迁移 migrate emigrate immigrate transmigrate intermigration</span></p></li><li><p><span>milit = soldier 兵 military militarism demilitarize militant hypermilitant</span></p></li><li><p><span>min[i] = small little 小 (prime) minister administer  administrator minify minimum miniature undiminishable minority minus minute</span></p></li><li><p><span>mir = wonder 惊奇，惊异 miracle mirror admire mirage miraculous</span></p></li><li><p><span>miss mit = send 投，送，发 missile dismiss mission manumit remittance transmit intermit emissive emissary emit immit promise compromise commit committee commission</span></p></li><li><p><span>mob =move 动 mobile demobilize immobile mobbish mobster mobocracy</span></p></li><li><p><span>mort = death 死 immortal mortuary postmortem</span></p></li><li><p><span>mot = move 移动 motion promote demote remote commotion  locomotive  automotive motor motile </span></p></li><li><p><span>nomin = name 名 nominal denominate ignominious ignominy innominate</span></p></li><li><p><span>nov = new 新 novel novelette novelty novice novation innovation renovate</span></p></li><li><p><span>numer = number 数 numeral numerous numerator enumerate innumerable supernumerary denumerable</span></p></li><li><p><span>onym = name 名 anonymous cryptonym homonymous onymous pseudonym synonym antonym</span></p></li><li><p><span>oper = work 工作 operation operose inoperable cooperate operatic</span></p></li><li><p><span>ori = rise 升起 oriental disorient originate</span></p></li><li><p><span>paci = peace 和平，平静 pacific repacify pacification pacify</span></p></li><li><p><span>pel = push drive 推，逐，驱 propeller expel expellant repel dispel compel impel</span></p></li><li><p><span>pend pens</span></p><ul><li><p><span>= hang 悬挂 independent  interdepend pending pendent suspend suspension suspensive append  impend </span></p></li><li><p><span>= weigh 称量 dispense dispensation pensive perpend ponder</span></p></li><li><p><span>= pay 付钱，支出，花费 expend expenditure expensive expense spend pension</span></p></li></ul></li><li><p><span>pet = seek 追求 competition appetite appetence appetizer petition centripetal</span></p></li><li><p><span>phon = sound 声音 microphone telephone phone videophone otophone symphony phonetic electrophone stereophone gramophone phonology euphonious cacophonous phonic aphonia megaphone polyphone</span></p></li><li><p><span>pict = paint 画，描绘 picture picturesque pictograph depict pictorial</span></p></li><li><p><span>plen = full 满，全 plenty plenitude plenary plenum plenipotentiary plenilune deplenish replenish</span></p></li><li><p><span>plic = fold 折，重叠 complicate explicate supplicate implicate duplicate multiplicate</span></p></li><li><p><span>pon = put 放置 postpone antepone component compound opponent exponent propone</span></p></li><li><p><span>popul = people 人民 population populous depopulate repopulate popularity popularization unpopular populace</span></p></li><li><p><span>port = carry 拿，带，运 portable import export transport deport reportage portage porter support portfolio sport</span></p></li><li><p><span>pos = put 放置 pose posture position exposure composition preposition oppose opposite dispose disposal propose reposit purpose interpose transpose deposit depose</span></p></li><li><p><span>preci = price 价值 precious appreciate depreciate praise</span></p></li><li><p><span>punct = point prick 点，刺 punctuation punctual punctum puncture acupuncture compunction pungent</span></p></li><li><p><span>pur = pure 清，纯，净 purify impurity depuration depurant Puritan</span></p></li><li><p><span>rect = right straight 正，直 incorrect rectification  [co]rectitude rectangle erect rectum direction director direct indirect</span></p></li><li><p><span>rupt = break 破 interrupt disrupt rupture bankrupt bankruptcy corrupt irrupt erupt</span></p></li><li><p><span>sal = salt 盐 salary salad salify saline salt desalt</span></p></li><li><p><span>scen[ds] = climb 攀，爬 ascend ascension ascent descend descent condescend transcend</span></p></li><li><p><span>sci = know 知 science unconscious subconscious conscience sciential omniscient nescient prescinet pseudoscience geoscience</span></p></li><li><p><span>sec sequ = follow 跟随 second secondary persecute consecution sequence consequence subsequence sequacious</span></p></li><li><p><span>sect = cut 切割 insect section sectile bisect dissect transect vivisect resect intersection secant cosecant</span></p></li><li><p><span>sen[ts] = feel 感觉 sentimental consent consentaneous consensus dissension resentment presentiment sense sensation nonsense insensible hypersensitive oversensitive desensitization extrasensory assentation sentence</span></p></li><li><p><span>sid = sit 坐 preside president reside resident subside dissident assiduous</span></p></li><li><p><span>sist = stand 站立 resistance assistant consist existence insistence persistence</span></p></li><li><p><span>son = sound 声音 sonic supersonic subsonic stereosonic unisonant dissonant resonant resonate ultrasonic sonics</span></p></li><li><p><span>spect = look 看 spectacle  prospective retrospection inspection expectation respect suspect suspicious introspect conspectus circumspect aspect spectator conspicouous specious perspective speciality specific especial speculation speculator specimen</span></p></li><li><p><span>spir = breathe 呼吸 expire conspire inspire respire spirit spiritual dispirit perspire aspirate</span></p></li><li><p><span>tail = cut 切割 tailor detail retail</span></p></li><li><p><span>tain → ten tin = hold 握，持，守 contain obtainable sustenance tenant tenancy maintenance tenable tenacious abstain abstention continue continent</span></p></li><li><p><span>tect = cover 掩盖 detect unprotected detectaphone</span></p></li><li><p><span>tele = far 远（电波） telephone telescope telecontrol telegram telegraph television teleview telecourse telescript teleprinter telemeter</span></p></li><li><p><span>tempor = time 时 temporary contemporary extempore temporize</span></p></li><li><p><span>ten[dts] = stretch 伸 extension attend contend tendentious tent extent intense tension hypertension distend tend tendance protend protentous pretend intend tender</span></p></li><li><p><span>terr = earth land 土地，陆地 territory exterritorial terrace Mediterranean extraterrestrial inter disinterment subterrane superterrene terrain</span></p></li><li><p><span>text = weave 编织 texture textual context pretext</span></p></li><li><p><span>tract = draw 拉，抽，引 tractor attract </span></p></li><li><p><span>un[i] = one 一 uniform disunity reunion disunion unit unique unify unification uniformity unison</span></p></li><li><p><span>urb = city 城市 suburban urban inurbane urbanization exurb interurban conurbation</span></p></li><li><p><span>vac[u] = empty 空 vacationist vacancy evacuate vacuity vacuum</span></p></li><li><p><span>vad → vas = walk go 行走 invade evade pervade wade waddle</span></p></li><li><p><span>vari = change 变化 invariable variety unvaried invariant variation varicoloured variform varisized</span></p></li><li><p><span>ven = come 来 intervene convene prevent event avenue revenue circumvent supervene contravene</span></p></li><li><p><span>vert → vers = turn 转 advertisement anniversary subvert diversion adversity divorce reverse irreversible introvert extrovert convert versatile controvert invert diverse retrovert avert version vertigo</span></p></li><li><p><span>vi[a] = way 路 obvious previous trival deviate via viatic viameter viaduct</span></p></li><li><p><span>vis vid = see 看 invisible visitor revisit advise advice revise previse supervise visual visage television visa evident provide improvident videophone videocast</span></p></li><li><p><span>vit = life 生命 vital revitalize devitalize viamine avitaminosis devitaminize</span></p></li><li><p><span>viv = live 活 survivor revive vivid vivisect</span></p></li><li><p><span>aer[o] 空气，空中，航空 aerial aeriform aerification aerodrome aerodynamics aerogram aerolithology aerology aerometer </span></p></li><li><p><span>alt 高 altitude alto exaltation altar altimeter</span></p></li><li><p><span>am 爱 amateurish amatory amour enamour</span></p></li><li><p><span>ambul 行，走 ambulance circumambulate noctambulant noctambulist perambulate preamble somnambulate</span></p></li><li><p><span>anim 生命，活，心神，意见 animalcule animation disanimate equanimity exanimate inanimate longanimity reanimation unanimous magnanimous</span></p></li><li><p><span>anthrop[o] 人，人类 anthropology anthropoid anthroposcopy anthroposociology philanthropy misanthropic</span></p></li><li><p><span>aqu 水 aquarium aqueduct aquosity aquiculture subaqueous aqualung</span></p></li><li><p><span>arch → archy 统治者 → 统治 anarchy monarch polyarchy oligarchy plutarchy gynarchy patriarch matriarch</span></p></li><li><p><span>avi 鸟 avian aviary aviculture aviation</span></p></li><li><p><span>bat 打 battle combat batter debate</span></p></li><li><p><span>biblio 书 bibliography bibliolatry bibliomania Bible</span></p></li><li><p><span>brig 战斗，打 brigand brigade brigantine</span></p></li><li><p><span>cid cad cas 降落，降临 case casual casualty occasion decadence accident incident coincideent Occident deciduous</span></p></li><li><p><span>cert 确实，确信 certify certification incertitude certain certainty ascertainable uncertain</span></p></li><li><p><span>chron 时 chronic synchronal synchronoscope chronometer chronicler chronology</span></p></li><li><p><span>cid → 137 cid cad cas</span></p></li><li><p><span>clin 倾 decline declension incline disinclination recline</span></p></li><li><p><span>cosm[o] 世界，宇宙 cosmics cosmology cosmonaut cosmopolis cosmos microcosm macrocosm</span></p></li><li><p><span>cracy 统治 democracy autocracy bureaucracy plutocracy theocracy monocracy polycracy</span></p><p><span>crat 支持或实行统治的人 democrat autocrat bureaucrat plutocrat monocrat</span></p></li><li><p><span>cub 躺，卧 incubate incubus concubine cubicle</span></p></li><li><p><span>cult 耕，培养 cultivate culture aquiculture agriculture apiculture arboriculture floriculture</span></p></li><li><p><span>cycl[o] 圆，环，轮 bicycle unicycle autocycle hemicycle cycle cyclometer cyclograph cyclone tetracycline</span></p></li><li><p><span>dem[o] 人民 democracy democrat demagogue demography endemic epidemic pandemic</span></p></li><li><p><span>dexter 右 dexter dexterous ambidexterity dextral dextrorotation dextrose</span></p></li><li><p><span>doc 教 doctor doctorate doctrine document indocile docent</span></p></li><li><p><span>dom 屋，家 domestic dome domesticate domicile</span></p></li><li><p><span>dorm 睡眠 dormitory dormancy dormitive endorm</span></p></li><li><p><span>drom 跑 aerodrome hippodrome motordrome prodrome syndrome dromedary dromometer</span></p></li><li><p><span>ego 我 ego egoism egocentricity egomania</span></p></li><li><p><span>err 漫游，走，行 errant erratic error aberrant inerrable</span></p></li><li><p><span>fab[u]l 言 fable fabulous confabulate confab effable</span></p></li><li><p><span>feder 联盟 federation antifederal confederacy confederate</span></p></li><li><p><span>ferv 沸，热 fervidity fervency fervescent fervor effervesce perfervid</span></p></li><li><p><span>fict fig 塑造，虚构 fiction fictitious fictile figment figure configuration disfigurement prefiguration transfiguration figurine</span></p></li><li><p><span>fid 信任 confide confidence confidential confidant overconfidence diffidence</span></p></li><li><p><span>fil 线 filar file defile profile filiform</span></p></li><li><p><span>flat 吹 inflationary inflatable inflator deflationary conflation</span></p></li><li><p><span>flex flect 弯曲 reflex reflection inflecrion flexuous flexible</span></p></li><li><p><span>flict 打击 affliction conflict inflict</span></p></li><li><p><span>frag fract 破，折 fragmentate fragile fracture fraction anfractuous refraction</span></p></li><li><p><span>frig 冷 refrigerator frigid frigidarium refrigerant</span></p></li><li><p><span>fug 逃，散 refugee fugacious febrifuge insectifuge lucifugous lactifuge vermifuge</span></p></li><li><p><span>f[o]und 底，基础 profound profundity fund fundamental found foundation </span></p></li><li><p><span>gam 婚姻 monogamy bigamy polygamy misogamy neogamist exogamy</span></p></li><li><p><span>gran 谷物，谷粒 granary grange granule</span></p></li><li><p><span>grav 重 gravity grave gravimeter gravid aggravation ingravescent grief grieve</span></p></li><li><p><span>greg 群，集合 aggregate gregarious congregation egregious segregate</span></p></li><li><p><span>gyn[eco] 妇女 gynecology androgyny misogyny monogyny polygyny</span></p></li><li><p><span>hal 呼吸 inhale inhalator exhale halitosis</span></p></li><li><p><span>helic[o] 螺旋 helicopter heliport helilift helical helicoid</span></p></li><li><p><span>hes her 黏着 hesitation adhere adhesion coherence cohesion incoherent inhere inherent</span></p></li><li><p><span>ign 火 ignite ignitron ignescent</span></p></li><li><p><span>integr 整，全 integration disintegrate reinregrate integrality integer</span></p></li><li><p><span>junct 连接，连结 junction conjunction disjunct adjunct</span></p></li><li><p><span>later 边 lateral unilateral bilateral quadrilateral multilateral equilateral laterad</span></p></li><li><p><span>leg 读 illegible legendary</span></p></li><li><p><span>leg[is] 法 legal legality legalization legalism extralegal illegal privileged legislate legislature</span></p></li><li><p><span>luc 光 lucent lucidity elucidate noctiluca translucent lucifugous</span></p></li><li><p><span>lumin 光 lumen luminary luminesce luminiferous luminosity illuminate</span></p></li><li><p><span>magn[i] 大 magnificent magnanimous magnifier magnitude magnifico magniloquent</span></p></li><li><p><span>matr[io] 母 matrimony matriarch matron metronage metropolis metropolitan maternality</span></p></li><li><p><span>mega 大 megaphone megalithic megapod megascope megascopic</span></p></li><li><p><span>mens 测量 immense dimension mensurable commensurate</span></p></li><li><p><span>ment 心，神，智，思，意 mental mentation dement dementation mention mentor amentia</span></p></li><li><p><span>min 伸出，突出 prominent eminent supereminent preeminent preeminent imminent</span></p></li><li><p><span>misc 混合，混杂 miscellaneous miscellany immiscible promiscuous  miscegenation</span></p></li><li><p><span>mis[o] 恨，厌恶 misanthropy misanthropic misogamy misogyny misoneism</span></p></li><li><p><span>mon ①告诫，提醒 monument monitor monitory monition admonish premonitor</span></p></li><li><p><span>mon ②单独，一个 monk monkhood monkdom monkery monastic monism</span></p></li><li><p><span>mur 墙 mural mure immurement extramural intermural intramural photomural</span></p></li><li><p><span>mut 变换 immutable mutant intermutation mutual commute commutate incommutable permute transmute</span></p></li><li><p><span>nat 诞生 native nation unnatural natality antenatal prenatal postnatal connate neonate</span></p></li><li><p><span>nav 船 navy naval navigate navigation astronavigation circumnavigate</span></p></li><li><p><span>nect nex 结，系 connect unconnected disconnect annex reannex</span></p></li><li><p><span>n[ei]gr 黑 Negro negroite negrophile negrophobia nigrify nigritude nigrescent denigrate</span></p></li><li><p><span>nihil 无 annihilate nihilism nihility</span></p></li><li><p><span>noc nox 伤害 innocent nocent innocuous innocuity noxiousness</span></p></li><li><p><span>noct[i] 夜 noctiflorous noctiluca noctivagant noctambulation equinoctial pernoctation</span></p></li><li><p><span>norm 规范，正规，正常 normality normalization abnormal enormous subnormal supernormal</span></p></li><li><p><span>nutri 营养 nutriology nutrient nutrition innutritious</span></p></li><li><p><span>orn 装饰 adornment adotn ornate ornamentation suborn subornation inornate</span></p></li><li><p><span>par 生，产 parent parentage primipara multiparous biparous fissiparous</span></p></li><li><p><span>parl 说，谈 parlour parley parliamentary parlance</span></p></li><li><p><span>past 喂食 pasture pastor depasture repast paste</span></p></li><li><p><span>path[oy] 疾病，疗法 pathology pathogenetic neuropathy dermatopathy psychopathy electropathy hydropathy</span></p></li><li><p><span>patr[i] 父，祖 patriarch patriot patriarch patriot compatriot expatriate repatriate patronize</span></p></li><li><p><span>ped ① 脚，足 expedition pedal pediform pedicure biped quadruped centipede multiped uniped soliped impede impediment pedestrian</span></p></li><li><p><span>ped ② 儿童，小孩 pedagogy pedant pedantry pedology pediatrician</span></p></li><li><p><span>petr[o] 石 petroleum petrous petrification</span></p></li><li><p><span>phag 吃 anthropophagous dyspahagia zoophagous phyllophagous phytophagous polyphagous</span></p></li><li><p><span>phil[o] 爱 philanthropy philology photophilous bibliophilist hippophile zoophilist Sinophile</span></p></li><li><p><span>phob[ia] 怕 photophobia dentophobia hydrophobia neophobia xenphobe zoophobia</span></p></li><li><p><span>plex 重叠，重 complexity simplex duplex triplex quadruplex multiplex perplex</span></p></li><li><p><span>polis 城市 necropolis acropolis cosmopolis megalopolis metropolis</span></p></li><li><p><span>prim 第一，最初 primary primal primacy primate prime primer primipara primogenitor primeval premier</span></p></li><li><p><span>radic 根 radical eradicate radicate radix radicle radish</span></p></li><li><p><span>ras rad 擦，刮 erase eraser erasion abrad abradant raze razor</span></p></li><li><p><span>rid ris 笑 ridiculous ridicule deride derision</span></p></li><li><p><span>rod ros 咬，啮 erode erosion corrode corrosion anticorrosion rodenticide</span></p></li><li><p><span>rot 轮，转 rotation rotor rotund subrotund circumrotate</span></p></li><li><p><span>rud 原始，粗野 rudeness rudiment erudite</span></p></li><li><p><span>rur rus 农村 rural rusticity rustication</span></p></li><li><p><span>sat[is] satur 足，满，饱 satisfaction dissatisfy saturable supersaturate unsaturate sate insatiable satiation</span></p></li><li><p><span>sen 老 seniority senate senesce senescence senile</span></p></li><li><p><span>sim[iu]l 相似，相同 similarity assimilate dissimilar dissimilate facsimile verisimilar simulate simultaneous</span></p></li><li><p><span>sol ① 单独 sole solo solitude soliloquy desolate</span></p></li><li><p><span>sol ② 太阳 solar solarium insolation turnsole circumsolar extrasolat lunisolar subsolar parasol</span></p></li><li><p><span>soph 智慧 philosopher unphilosophical pansophic sophist sophism</span></p></li><li><p><span>sper 希望 desperate desperado despair despairing</span></p></li><li><p><span>spers spars 散，撒 dispersal aspersion intersperse sparsity</span></p></li><li><p><span>splend 发光，照耀 splendid splendour resplendent splendiferous</span></p></li><li><p><span>stell 星 stellar stelliferous stellular constellate interstellar</span></p></li><li><p><span>tact tag 触 contact contagious anticontagious intact tactile tactility</span></p></li><li><p><span>the[o] 神 theism atheism monotheism polytheist antitheism theocracy theology</span></p></li><li><p><span>ton 音 tone toneless monotone atonal baritone diatonic intonation undertone</span></p></li><li><p><span>tort 扭 extort tortuous tortuosity torture contort distort tortoise retort tortile torsion</span></p></li><li><p><span>tour 迂回，转 tourism detour contour</span></p></li><li><p><span>trud → trus 推，冲 intrude intrusion extrude protrude detrude</span></p></li><li><p><span>tu[i]t 监护，看管 tutor tutorial tutee untutored tuition</span></p></li><li><p><span>umbr 阴影 umbrella umbrageous umbriferous adumbrate inumbrate penumbra</span></p></li><li><p><span>ut us 用 utility utilitarian utilization inutile utensil usage usual usury</span></p></li><li><p><span>vag 走，漫游 extravagant vague vagile vagabondage divagate noctivagant vagrant vagary</span></p></li><li><p><span>val 强 invalidity invalidism valiant valour convalesce convalescence</span></p></li><li><p><span>van 空，无 vanish vanity evanesce evanish</span></p></li><li><p><span>ver[i] 真实 verify very veracity verifier verification verisimilitude verism verity veritable</span></p></li><li><p><span>voc vok 声音，叫喊 vocal convoke convocation revoke revocation irrevocable provoke equivocality equivoke evoke evocation vocable vocabulary advocate vocation</span></p></li><li><p><span>vol[unt] 意志，意愿 volition benevolence malevolent volunteer involuntary</span></p></li><li><p><span>volu volv 滚，转 involvement volume evolve evolution convolute intervolve circumvolution revolutionary revolve voluble</span></p></li></ol></div></div>
+</body>
+</html>
